@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "A WordPress site migrated to Astro" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+        background: #ffffff;
+        color: #333;
+      }
+      body {
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #e1e8ed;
+        padding-bottom: 10px;
+      }
+      .blog-post, .page {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .metadata {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+      }
+      .featured-image {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

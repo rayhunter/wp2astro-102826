@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../layouts/Page.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages
+    .filter(page => page.slug !== 'admin') // Exclude admin to avoid conflicts with /admin/ CMS
+    .map(page => ({
+      params: { slug: page.slug },
+      props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+<Page frontmatter={page.data}>
+  <Content />
+</Page>

@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: rayhunter/wp2astro-102826
+  branch: main
+  publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+collections:
+- name: posts
+  label: Blog Posts
+  folder: src/content/blog
+  create: true
+  slug: '{{slug}}'
+  fields:
+  - label: Title
+    name: title
+    widget: string
+  - label: Date
+    name: date
+    widget: datetime
+  - label: Featured Image
+    name: image
+    widget: image
+    required: false
+  - label: Categories
+    name: categories
+    widget: list
+  - label: Tags
+    name: tags
+    widget: list
+  - label: Body
+    name: body
+    widget: markdown
+- name: pages
+  label: Pages
+  folder: src/content/pages
+  create: true
+  slug: '{{slug}}'
+  fields:
+  - label: Title
+    name: title
+    widget: string
+  - label: Featured Image
+    name: image
+    widget: image
+    required: false
+  - label: Body
+    name: body
+    widget: markdown
